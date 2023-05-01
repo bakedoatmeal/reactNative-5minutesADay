@@ -1,12 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
+import DailyReflection from './components/DailyReflection';
+import Summary from './components/Summary';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="DailyReflection">
+        <Tab.Screen name="Daily Reflection" component={DailyReflection}/>
+        <Tab.Screen name="Summary" component={Summary}/>        
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
