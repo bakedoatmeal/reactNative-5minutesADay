@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { addDailyReflection } from '../Reflections';
 
-export default function DailyReflection({data}) {
+export default function DailyReflection({route, navigation}) {
   
+  const data = route.params?.data;
+
   return (
     <View>
       <SafeAreaView>
-        <Text>{date.Date}</Text>
+        <Text>{data.Date}</Text>
         <Text>I am feeling...</Text>
         <Text>{data.feeling}</Text>
         <Text>I am grateful for...</Text>

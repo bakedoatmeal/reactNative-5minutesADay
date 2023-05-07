@@ -1,6 +1,6 @@
 import { StyleSheet} from 'react-native';
 import DailyReflection from './DailyReflection';
-import Summary from './Summary';
+import History from './Summary'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,7 +12,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator initialRouteName="DailyReflection">
         <Tab.Screen name="Daily Reflection" component={DailyReflection}/>
-        <Tab.Screen name="Summary" component={Summary}/>        
+        <Tab.Screen name="Summary" component={History}/>        
       </Tab.Navigator>
     </NavigationContainer>
   );

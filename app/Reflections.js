@@ -1,7 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: {},
+  value: {
+    '2023-05-01': {
+      "actions": "Working out", 
+      "affirmation": "I am capable", 
+      "date": "2023-05-01", 
+      "feeling": "Happy", 
+      "grateful": "Family and the nice weather", 
+      "highlight": "Baking cupcakes", 
+      "lesson": "Short row knitting"
+    },
+  },
 }
 
 export const reflectionsSlice = createSlice({
