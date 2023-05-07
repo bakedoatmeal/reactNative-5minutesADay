@@ -4,6 +4,13 @@ import React, { useState } from 'react';
 export default function DailyReflection() {
   const date = Date.now()
 
+  // NSUSERStorage for key value pairs, similar to local storage
+  // Look into react native local storage 
+  // Look up timer app and password app 
+  // icloud API 
+  // core data - feature in IOS ecosystem, like a database
+  // realm: alternate to core data 
+
   const [journalData, setJournalData] = useState({
     date: date,
     feeling: 5,

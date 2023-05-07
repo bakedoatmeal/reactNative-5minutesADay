@@ -1,28 +1,12 @@
-import { StyleSheet} from 'react-native';
-import DailyReflection from './components/DailyReflection';
-import Summary from './components/Summary';
+import { store } from './app/store';
+import { Provider }  from 'react-redux';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
+import Main from './app/components/Main';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator initialRouteName="DailyReflection">
-        <Tab.Screen name="Daily Reflection" component={DailyReflection}/>
-        <Tab.Screen name="Summary" component={Summary}/>        
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
