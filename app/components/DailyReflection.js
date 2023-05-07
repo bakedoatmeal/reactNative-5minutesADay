@@ -1,8 +1,11 @@
 import { KeyboardAvoidingView, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
+import { addDailyReflection } from '../Reflections';
 
 export default function DailyReflection() {
-  const date = Date.now()
+  const date = new Date();
+  const formattedDate = date.toISOString().slice(0, 10);
 
   // NSUSERStorage for key value pairs, similar to local storage
   // Look into react native local storage 
@@ -12,14 +15,16 @@ export default function DailyReflection() {
   // realm: alternate to core data 
 
   const [journalData, setJournalData] = useState({
-    date: date,
-    feeling: 5,
+    date: formattedDate,
+    feeling: '',
     grateful: '', 
     actions: '', 
     affirmation: '',
     highlight: '',
     lesson: '',
   })
+
+  const dispatch = useDispatch()
   
   return (
     <View>
@@ -49,7 +54,7 @@ export default function DailyReflection() {
           onChangeText={value => setJournalData({...journalData, affirmation: value})}
           value={journalData.affirmation}
         />
-        <Text>Daily affirmation</Text>
+        <Text>Highlight of the day</Text>
         <TextInput
           placeholder="Highlight of the day"
           onChangeText={value => setJournalData({...journalData, highlight: value})}
@@ -62,7 +67,9 @@ export default function DailyReflection() {
           value={journalData.lesson}
         />
       </KeyboardAvoidingView>
-      <Button title="Save"/>
+      <Button title="Save" onPress={() => {
+        dispatch(addDailyReflection(journalData))
+      }}/>
     </View>
         
   )

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: [],
+  value: {},
 }
 
 export const reflectionsSlice = createSlice({
@@ -9,7 +9,8 @@ export const reflectionsSlice = createSlice({
   initialState,
   reducers: {
     addDailyReflection: (state, action) => {
-      state.value.push(action.payload)
+      state.value[action.payload.date] = action.payload
+      console.log(state.value)
     }
   }
 })
