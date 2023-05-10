@@ -32,7 +32,7 @@ export default function DailyReflection() {
     <ScrollView style={style.scrollView}>
     <View style={style.container}>
       <KeyboardAvoidingView>
-        <Text>{date.Date}</Text>
+        <Text style={style.label}>{formattedDate}</Text>
         <Text style={style.label}>I am feeling...</Text>
         <TextInput
           style={style.input}
@@ -128,6 +128,6 @@ const style = StyleSheet.create({
     minHeight: 50,
   },
   scrollView: {
-    backgroundColor: '#29e6f0',
+    backgroundColor: '#004782',
   }
 })

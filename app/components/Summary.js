@@ -27,25 +27,26 @@ function SummarySelector() {
 
 
   const handleSelection = (day) => {
-    console.log(reflections)
-    console.log('selected day', day);
     setSelected(day);
     if (day in reflections) {
       setData(reflections[day]);
-      console.log('data found!', reflections[day]);
     } else {
       setData()
     }
   }
 
-  const filledDates =  Object.keys(reflections);
+  const filledDates = {}
+  Object.keys(reflections).forEach((value) => {
+    filledDates[value] = {marked: true, selectedDotColor: 'red'}
+  })
+
 
   return (
     <SafeAreaView>
       <Calendar onDayPress={(day) => handleSelection(day.dateString)} 
       markedDates={{
         [selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'},
-       [filledDates]: {marked: true, selectedDotColor: 'red'}
+        ...filledDates
       }}
       style={{
         borderWidth: 1,
@@ -63,12 +64,14 @@ function SummarySelector() {
           }
           }
         > 
-          <View>
-            <Text>Reflections available</Text>
-            <Text>{data.date}</Text>
-            <Text>Highlight of the Day</Text>
-            <Text>{data.highlight}</Text>
-            <Text>Read full reflection...</Text>
+          <View style={style.container}>
+            <View styles={style.header}>
+              <Text style={style.label}>Reflections available</Text>
+              <Text style={style.label}>{data.date}</Text>
+            </View>
+            <Text style={style.label}>Highlight of the Day</Text>
+            <Text style={style.input}>{data.highlight}</Text>
+            <Text style={style.click}>Read full reflection...</Text>
           </View>
         </TouchableHighlight>
       ) : (
@@ -82,3 +85,42 @@ function SummarySelector() {
     </SafeAreaView>
   )
 }
+
+
+const style = StyleSheet.create({
+  label: {
+    fontSize: 15,
+    color: '#3B6064',
+    paddingTop: 20,
+  },
+  container: {
+    marginTop: 40,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    padding: 18,
+    opacity: '30%',
+    borderRadius: 10,
+    backgroundColor: 'rgba(245, 244, 237, 0.9)'
+  },
+  input: {
+    marginTop: 6,
+    color: '#364958',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 10,
+    minHeight: 50,
+  },
+  scrollView: {
+    backgroundColor: '#008266',
+  },
+  click: {
+    marginTop: 10,
+    color: 'teal',
+  }, 
+  header: {
+    display: 'flex',
+    flexDirection: 'flex',
+    alignItems: 'flex-start',
+  }
+})
