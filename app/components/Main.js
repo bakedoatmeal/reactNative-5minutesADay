@@ -4,7 +4,7 @@ import History from './Summary'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from 'react-native-vector-icons'
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,22 +13,20 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator initialRouteName="DailyReflection"
         screenOptions={({ route }) => ({
-          // tabBarIcon: ({ focused, color, size }) => {
-          //   let iconName;
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
       
-          //   if (route.name === 'Daily Reflecion') {
-          //     iconName = focused
-          //       ? 'journal' // Set focused icon
-          //       : 'journal-outline'; // Set the not focused icon
-          //   } else if (route.name === 'Summary') {
-          //     iconName = focused ? 'calendar-clear' : 'calendar-number-outline';
-          //   }
+            if (route.name === 'Daily Reflecion') {
+              iconName = focused
+                ? 'book-open' // Set focused icon
+                : 'book-open'; // Set the not focused icon
+            } else if (route.name === 'Summary') {
+              iconName = focused ? 'calendar' : "calendar";
+            }
       
-          //   // You can return any component that you like here!
-          //   return <Ionicons name={iconName} size={size} color={color} />;
-          // },
-          // tabBarActiveTintColor: 'tomato', // Active/focussed color
-          // tabBarInactiveTintColor: 'gray', // Inactive color,
+            // You can return any component that you like here!
+            return  <Icon name={iconName} size={25} color="blue" />
+          },
           headerShown: false
         })
       }

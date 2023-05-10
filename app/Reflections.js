@@ -1,28 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// const getAsyncData = async () => {
-//   let keys = []
-//   try {
-//     keys = await AsyncStorage.getAllKeys()
-//     const value = await AsyncStorage.multiGet(keys)
-//     console.log(value);
-
-//     const data = {}
-
-//     value.forEach((value) => {
-//       data[value[0]] = JSON.parse(value[1]);
-//     })
-//     console.log(data)
-
-//   } catch(e) {
-//     // error reading value
-//     console.log('There was an error getting async data', e)
-//   }
-// }
-
-// const data = getAsyncData()
-// console.log(data)
+import { saveState } from './asyncStorage';
 
 const initialState = {
   value: {
@@ -41,7 +19,7 @@ const initialState = {
       "date": "2023-05-07", 
       "feeling": "Happy", 
       "grateful": "Family and the nice weather", 
-      "highlight": "Baking cupcakes", 
+      "highlight": "Playing fetch with Ara", 
       "lesson": "Short row knitting"
     },
     '2023-05-03': {
@@ -50,7 +28,7 @@ const initialState = {
       "date": "2023-05-03", 
       "feeling": "Happy", 
       "grateful": "Family and the nice weather", 
-      "highlight": "Baking cupcakes", 
+      "highlight": "Tennis!", 
       "lesson": "Short row knitting"
     },
   },
@@ -62,16 +40,6 @@ export const reflectionsSlice = createSlice({
   reducers: {
     addDailyReflection: (state, action) => {
       state.value[action.payload.date] = action.payload
-      console.log(state.value)
-
-      // try {
-      //   const JSONData = JSON.stringify(action.payload)
-      //   await AsyncStorage.setItem(action.payload.date, JSONData)
-      //   const keys = await AsyncStorage.getAllKeys()
-      //   console.log(keys)
-      // } catch (e) {
-      //   console.log('error saving to async storage')
-      // }
 
     }
   }
