@@ -1,7 +1,8 @@
-import { KeyboardAvoidingView, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { addDailyReflection } from '../Reflections';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DailyReflection() {
   const date = new Date();
@@ -27,50 +28,106 @@ export default function DailyReflection() {
   const dispatch = useDispatch()
   
   return (
-    <View>
+    <SafeAreaView>
+    <ScrollView style={style.scrollView}>
+    <View style={style.container}>
       <KeyboardAvoidingView>
         <Text>{date.Date}</Text>
-        <Text>I am feeling...</Text>
+        <Text style={style.label}>I am feeling...</Text>
         <TextInput
-          placeholder="answer here"
+          style={style.input}
+          multiline
+          numberOfLines={4}
+          maxLength={150}
+          placeholder="Answer here"
           onChangeText={value => setJournalData({...journalData, feeling: value})}
           value={journalData.feeling}
         />
-        <Text>I am grateful for...</Text>
+        <Text style={style.label}>I am grateful for...</Text>
         <TextInput
-          placeholder="I am grateful for..."
+          style={style.input}
+          placeholder="Answer here"
+          multiline
+          numberOfLines={4}
+          maxLength={150}
           onChangeText={value => setJournalData({...journalData, grateful: value})}
           value={journalData.grateful}
         />
-        <Text>What would make today great?</Text>
+        <Text style={style.label}>What would make today great?</Text>
         <TextInput
-          placeholder="What would make today great?"
+          style={style.input}
+          placeholder="Answer here"
+          multiline
+          numberOfLines={4}
+          maxLength={6}
           onChangeText={value => setJournalData({...journalData, actions: value})}
           value={journalData.actions}
         />
-        <Text>Daily affirmation</Text>
+        <Text style={style.label}>Daily affirmation</Text>
         <TextInput
-          placeholder="Daily affirmation"
+          style={style.input}
+          placeholder="Answer here"
+          multiline
+          numberOfLines={150}
+          maxLength={6}
           onChangeText={value => setJournalData({...journalData, affirmation: value})}
           value={journalData.affirmation}
         />
-        <Text>Highlight of the day</Text>
+        <Text style={style.label}>3 highlights of the day</Text>
         <TextInput
-          placeholder="Highlight of the day"
+          style={style.input}
+          multiline
+          numberOfLines={4}
+          maxLength={150}
+          placeholder="Answer here"
           onChangeText={value => setJournalData({...journalData, highlight: value})}
           value={journalData.highlight}
         />
-        <Text>What did I learn today?</Text>
+        <Text style={style.label}>What did I learn today?</Text>
         <TextInput
-          placeholder="Highlight of the day"
+          style={style.input}
+          multiline
+          numberOfLines={4}
+          maxLength={150}
+          placeholder="Answer here"
           onChangeText={value => setJournalData({...journalData, lesson: value})}
           value={journalData.lesson}
         />
       </KeyboardAvoidingView>
-      <Button title="Save" onPress={() => {
+      <Button style={style.button} title="Save" color='#3B6064' onPress={() => {
         dispatch(addDailyReflection(journalData))
       }}/>
-    </View>
-        
+      </View>
+    </ScrollView>
+    </SafeAreaView>
   )
 }
+
+const style = StyleSheet.create({
+  label: {
+    fontSize: 20,
+    color: '#3B6064',
+    paddingTop: 20,
+  },
+  container: {
+    marginTop: 40,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    padding: 18,
+    opacity: '30%',
+    borderRadius: 10,
+    backgroundColor: 'rgba(245, 244, 237, 0.9)'
+  },
+  input: {
+    marginTop: 6,
+    color: '#364958',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 10,
+    minHeight: 50,
+  },
+  scrollView: {
+    backgroundColor: '#29e6f0',
+  }
+})

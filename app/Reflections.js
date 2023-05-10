@@ -11,6 +11,24 @@ const initialState = {
       "highlight": "Baking cupcakes", 
       "lesson": "Short row knitting"
     },
+    '2023-05-07': {
+      "actions": "Playing guitar", 
+      "affirmation": "I am worthy", 
+      "date": "2023-05-07", 
+      "feeling": "Happy", 
+      "grateful": "Family and the nice weather", 
+      "highlight": "Baking cupcakes", 
+      "lesson": "Short row knitting"
+    },
+    '2023-05-03': {
+      "actions": "Knitting", 
+      "affirmation": "I am deserving", 
+      "date": "2023-05-03", 
+      "feeling": "Happy", 
+      "grateful": "Family and the nice weather", 
+      "highlight": "Baking cupcakes", 
+      "lesson": "Short row knitting"
+    },
   },
 }
 
