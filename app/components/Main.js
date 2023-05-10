@@ -13,22 +13,22 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator initialRouteName="DailyReflection"
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+          // tabBarIcon: ({ focused, color, size }) => {
+          //   let iconName;
       
-            if (route.name === 'Daily Reflecion') {
-              iconName = focused
-                ? 'journal' // Set focused icon
-                : 'journal-outline'; // Set the not focused icon
-            } else if (route.name === 'Summary') {
-              iconName = focused ? 'calendar-clear' : 'calendar-number-outline';
-            }
+          //   if (route.name === 'Daily Reflecion') {
+          //     iconName = focused
+          //       ? 'journal' // Set focused icon
+          //       : 'journal-outline'; // Set the not focused icon
+          //   } else if (route.name === 'Summary') {
+          //     iconName = focused ? 'calendar-clear' : 'calendar-number-outline';
+          //   }
       
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'tomato', // Active/focussed color
-          tabBarInactiveTintColor: 'gray', // Inactive color,
+          //   // You can return any component that you like here!
+          //   return <Ionicons name={iconName} size={size} color={color} />;
+          // },
+          // tabBarActiveTintColor: 'tomato', // Active/focussed color
+          // tabBarInactiveTintColor: 'gray', // Inactive color,
           headerShown: false
         })
       }

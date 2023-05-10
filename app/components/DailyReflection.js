@@ -59,7 +59,7 @@ export default function DailyReflection() {
           placeholder="Answer here"
           multiline
           numberOfLines={4}
-          maxLength={6}
+          maxLength={150}
           onChangeText={value => setJournalData({...journalData, actions: value})}
           value={journalData.actions}
         />
@@ -69,7 +69,7 @@ export default function DailyReflection() {
           placeholder="Answer here"
           multiline
           numberOfLines={150}
-          maxLength={6}
+          maxLength={150}
           onChangeText={value => setJournalData({...journalData, affirmation: value})}
           value={journalData.affirmation}
         />
@@ -95,6 +95,7 @@ export default function DailyReflection() {
         />
       </KeyboardAvoidingView>
       <Button style={style.button} title="Save" color='#3B6064' onPress={() => {
+        console.log('journalData', journalData)
         dispatch(addDailyReflection(journalData))
       }}/>
       </View>

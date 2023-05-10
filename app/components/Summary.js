@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Stack = createStackNavigator();
 
 export default function History({navigation}) {
@@ -36,9 +38,11 @@ function SummarySelector() {
   }
 
   const filledDates = {}
-  Object.keys(reflections).forEach((value) => {
-    filledDates[value] = {marked: true, selectedDotColor: 'red'}
-  })
+  if (reflections) {
+    Object.keys(reflections).forEach((value) => {
+      filledDates[value] = {marked: true, selectedDotColor: 'red'}
+    })
+  }
 
 
   return (
@@ -75,9 +79,9 @@ function SummarySelector() {
           </View>
         </TouchableHighlight>
       ) : (
-        <View>
-          <Text>{selected}</Text>
-          <Text>No data for this day!</Text>
+        <View style={style.container}>
+          <Text style={style.label}>{selected}</Text>
+          <Text style={style.label}>No data for this day!</Text>
         </View>
       )
       
